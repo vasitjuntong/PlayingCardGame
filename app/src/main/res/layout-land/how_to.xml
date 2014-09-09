@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="left"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:background="#555">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="35"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+        <ImageView
+            android:id="@+id/card_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/red_joker"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="65"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:gravity="center|top"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            style="@style/shadowEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/description_text_view"
+            style="@style/shadowEffectTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:text="Description"
+            android:gravity="center|top"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/previous_button"
+                android:id="@+id/previous_button"
+                android:onClick="previousButton"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/next_button"
+                android:id="@+id/next_button"
+                android:onClick="nextButton"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
