@@ -1,6 +1,8 @@
 package com.asevensoft.a7002;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -65,7 +67,7 @@ public class StartGame extends Activity implements SensorEventListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_game);
+        setContentView(R.layout.start_game2);
 
         cardImages = (ImageView) findViewById(R.id.card_images);
         titleNo = (TextView) findViewById(R.id.title_no);
@@ -191,5 +193,22 @@ public class StartGame extends Activity implements SensorEventListener{
 ////            titleNo.setText("x " + event.values[0]);
 ////            titleNo2.setText("z " + event.values[2]);
 //        }
+    }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(getString(R.string.dialogTitle))
+                .setMessage(getString(R.string.dialogMessage))
+                .setPositiveButton(getString(R.string.dialogYesButton), new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton(getString(R.string.dialogNoButton), null)
+                .show();
     }
 }

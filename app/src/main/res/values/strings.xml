@@ -6,5 +6,9 @@
     <string name="action_settings">Settings</string>
     <string name="previous_button">Previous</string>
     <string name="next_button">Next</string>
+    <string name="dialogTitle">แจ้งเตือน!</string>
+    <string name="dialogMessage">คุณต้องการออกจากการเล่น?</string>
+    <string name="dialogYesButton">ใช่</string>
+    <string name="dialogNoButton">ไม่ใช่</string>
 
 </resources>
