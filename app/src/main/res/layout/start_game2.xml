@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100"
-    android:background="#555">
+    android:background="#555"
+    tools:context=".StartGame">
 
     <TextView
         android:id="@+id/title_no"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="7"
+        android:paddingTop="15dp"
         android:gravity="center"
         android:text=""
         style="@style/shadowEffectTitle"/>
@@ -19,7 +22,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="90">
+        android:layout_weight="86">
 
         <ImageView
             android:layout_width="match_parent"
@@ -42,7 +45,8 @@
         android:id="@+id/title_no_2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="7"
+        android:paddingTop="15dp"
         android:gravity="center"
         android:text=""
         style="@style/shadowEffectTitle"/>

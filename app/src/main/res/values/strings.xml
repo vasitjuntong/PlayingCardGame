@@ -6,9 +6,15 @@
     <string name="action_settings">Settings</string>
     <string name="previous_button">Previous</string>
     <string name="next_button">Next</string>
-    <string name="dialogTitle">แจ้งเตือน!</string>
-    <string name="dialogMessage">คุณต้องการออกจากการเล่น?</string>
-    <string name="dialogYesButton">ใช่</string>
-    <string name="dialogNoButton">ไม่ใช่</string>
+    <string name="dialogTitle">Warning!</string>
+    <string name="dialogMessage">Are you sure?</string>
+    <string name="dialogYesButton">Yes</string>
+    <string name="dialogNoButton">No</string>
+    <string name="textGameOver">Game is Over!</string>
+    <string name="textTotal">Total</string>
+    <string name="textKing">King</string>
+    <string name="textHowTo">How to</string>
+    <string name="textStartGame">Start Game</string>
+    <string name="textAboutUs">About Us</string>
 
 </resources>

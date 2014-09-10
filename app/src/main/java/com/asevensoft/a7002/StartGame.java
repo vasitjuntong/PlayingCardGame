@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -20,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class StartGame extends Activity implements SensorEventListener{
+public class StartGame extends Activity{
     int limitConfig = 52;
     int counterConfig = 1;
     Boolean isDebug = false;
@@ -28,9 +24,6 @@ public class StartGame extends Activity implements SensorEventListener{
     ImageView cardImages;
     TextView titleNo, titleNo2;
     ProgressBar spinner;
-
-    Sensor accelerometer;
-    SensorManager sm;
 
     Integer images[] = {
             R.drawable.ace_of_clubs, R.drawable.ace_of_diamonds, R.drawable.ace_of_hearts, R.drawable.ace_of_spades,
@@ -73,10 +66,6 @@ public class StartGame extends Activity implements SensorEventListener{
         titleNo = (TextView) findViewById(R.id.title_no);
         titleNo2 = (TextView) findViewById(R.id.title_no_2);
 
-        sm=(SensorManager)getSystemService(SENSOR_SERVICE);
-        accelerometer=sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         spinner.setVisibility(View.GONE);
 
@@ -92,24 +81,23 @@ public class StartGame extends Activity implements SensorEventListener{
 
         titleNo2.setRotation(180);
 
-
-        cardImages.setOnClickListener(new View.OnClickListener() {
+        cardImages.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 spinner.setVisibility(View.VISIBLE);
                 cardImages.setEnabled(false);
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         spinner.setVisibility(View.GONE);
 
-                        if(firstClick == 0){
-                            if(number[counter]==48||number[counter]== 49||number[counter]==50||number[counter]==51)
+                        if (firstClick == 0) {
+                            if (number[counter] == 48 || number[counter] == 49 || number[counter] == 50 || number[counter] == 51)
                                 count_king++;
 
-                            FormatMessage total = new FormatMessage("Total", counter_show, limit_show);
-                            FormatMessage king = new FormatMessage("King", count_king, 4);
-                            titleNo.setText(total.getTitle()+ " " + king.getTitle());
-                            titleNo2.setText(total.getTitle()+ " " + king.getTitle());
+                            FormatMessage total = new FormatMessage(getString(R.string.textTotal), counter_show, limit_show);
+                            FormatMessage king = new FormatMessage(getString(R.string.textKing), count_king, 4);
+                            titleNo.setText(total.getTitle() + " " + king.getTitle());
+                            titleNo2.setText(total.getTitle() + " " + king.getTitle());
                             titleNo2.setRotation(180);
 
                             Integer imageNum = images[number[counter]];
@@ -118,28 +106,28 @@ public class StartGame extends Activity implements SensorEventListener{
                             firstClick = 1;
                             cardImages.setEnabled(true);
 
-                        }else{
-                            if(counter < limitConfig) {
+                        } else {
+                            if (counter < limitConfig) {
                                 counter++;
                                 counter_show++;
-                                if(number[counter]==48||number[counter]== 49||number[counter]==50||number[counter]==51)
+                                if (number[counter] == 48 || number[counter] == 49 || number[counter] == 50 || number[counter] == 51)
                                     count_king++;
                             }
 
 
-                                FormatMessage total = new FormatMessage("Total", counter_show, limit_show);
-                                FormatMessage king = new FormatMessage("King", count_king, 4);
-                                titleNo.setText(total.getTitle()+ " " + king.getTitle());
-                                titleNo2.setText(total.getTitle()+ " " + king.getTitle());
-                                titleNo2.setRotation(180);
+                            FormatMessage total = new FormatMessage(getString(R.string.textTotal), counter_show, limit_show);
+                            FormatMessage king = new FormatMessage(getString(R.string.textKing), count_king, 4);
+                            titleNo.setText(total.getTitle() + " " + king.getTitle());
+                            titleNo2.setText(total.getTitle() + " " + king.getTitle());
+                            titleNo2.setRotation(180);
 
                             final Integer[] imageNum = {images[number[counter]]};
-                                cardImages.setImageResource(imageNum[0]);
+                            cardImages.setImageResource(imageNum[0]);
 
-                            if(counter == 51) {
+                            if (counter == 51) {
 
-                                Toast.makeText(getApplicationContext(), "Game is Over!",
-                                Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), getString(R.string.textGameOver),
+                                        Toast.LENGTH_LONG).show();
 
                                 cardImages.setEnabled(true);
 
@@ -164,8 +152,7 @@ public class StartGame extends Activity implements SensorEventListener{
 
                                     }
                                 });
-                            }
-                            else{
+                            } else {
                                 cardImages.setEnabled(true);
                             }
                         }
@@ -175,25 +162,11 @@ public class StartGame extends Activity implements SensorEventListener{
                     }
 
                 }, 2000);
+                return false;
             }
         });
     }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-//        if(event.values[0] > 9 && event.values[1] < 5 && event.values[2] > 5){
-//            Intent i = new Intent(StartGame.this, StartGame.class);
-//            startActivity(i);
-////            titleNo.setText("x " + event.values[0]);
-////            titleNo2.setText("z " + event.values[2]);
-//        }
-    }
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -210,5 +183,21 @@ public class StartGame extends Activity implements SensorEventListener{
                 })
                 .setNegativeButton(getString(R.string.dialogNoButton), null)
                 .show();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        if(hasFocus){
+            getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+               |View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+               |View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+               |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+               |View.SYSTEM_UI_FLAG_FULLSCREEN
+               |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            );
+        }
     }
 }
