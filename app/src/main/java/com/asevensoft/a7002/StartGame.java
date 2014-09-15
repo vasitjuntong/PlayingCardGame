@@ -81,9 +81,9 @@ public class StartGame extends Activity{
 
         titleNo2.setRotation(180);
 
-        cardImages.setOnLongClickListener(new View.OnLongClickListener() {
+        cardImages.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 spinner.setVisibility(View.VISIBLE);
                 cardImages.setEnabled(false);
                 new Handler().postDelayed(new Runnable() {
@@ -162,7 +162,6 @@ public class StartGame extends Activity{
                     }
 
                 }, 2000);
-                return false;
             }
         });
     }
