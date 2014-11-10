@@ -8,8 +8,8 @@ android {
         applicationId "com.asevensoft.a7002"
         minSdkVersion 15
         targetSdkVersion 20
-        versionCode 1
-        versionName "1.0"
+        versionCode 102
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -21,4 +21,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:5.+'
 }

@@ -17,5 +17,6 @@
     <string name="textStartGame">เริ่มเกม</string>
     <string name="textHowTo">วิธีเล่น</string>
     <string name="textAboutUs">เกี่ยวกับ</string>
+    <string name="title_start_game">แตะไพ่เพื่อเริ่มเกม</string>
 
 </resources>

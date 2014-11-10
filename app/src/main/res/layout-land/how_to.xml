@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="left"
     android:layout_width="match_parent"
@@ -29,7 +30,7 @@
 
         <TextView
             android:id="@+id/title_text_view"
-            style="@style/shadowEffect"
+            style="@style/shadowAboutUs"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="20"
@@ -67,7 +68,15 @@
                 android:onClick="nextButton"/>
 
         </LinearLayout>
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-2884777141626577/1357313444">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
+
 
 
 </LinearLayout>

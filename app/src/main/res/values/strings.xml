@@ -7,7 +7,7 @@
     <string name="previous_button">Previous</string>
     <string name="next_button">Next</string>
     <string name="dialogTitle">Warning!</string>
-    <string name="dialogMessage">Are you sure?</string>
+    <string name="dialogMessage">Do you want to exit?</string>
     <string name="dialogYesButton">Yes</string>
     <string name="dialogNoButton">No</string>
     <string name="textGameOver">Game is Over!</string>
@@ -16,5 +16,6 @@
     <string name="textHowTo">How to</string>
     <string name="textStartGame">Start Game</string>
     <string name="textAboutUs">About Us</string>
+    <string name="title_start_game">Touch for start</string>
 
 </resources>

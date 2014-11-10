@@ -16,8 +16,9 @@
         android:layout_weight="7"
         android:paddingTop="15dp"
         android:gravity="center"
-        android:text=""
-        style="@style/shadowEffectTitle"/>
+        style="@style/shadowEffectTitle"
+        android:text="@string/title_start_game"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,7 +49,7 @@
         android:layout_weight="7"
         android:paddingTop="15dp"
         android:gravity="center"
-        android:text=""
+        android:text="@string/title_start_game"
         style="@style/shadowEffectTitle"/>
 
 </LinearLayout>

@@ -3,7 +3,6 @@ package com.asevensoft.a7002;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -19,6 +18,7 @@ import java.util.List;
 public class StartGame extends Activity{
     int limitConfig = 52;
     int counterConfig = 1;
+    int loading = 500;
     Boolean isDebug = false;
     int counter = counterConfig - 1, counter_show = counterConfig, limit = limitConfig - 1, limit_show = limitConfig, firstClick = 0, count_king = 0;
     ImageView cardImages;
@@ -40,20 +40,36 @@ public class StartGame extends Activity{
             R.drawable.queen_of_clubs2, R.drawable.queen_of_diamonds2, R.drawable.queen_of_hearts2, R.drawable.queen_of_spades2,
             R.drawable.king_of_clubs2, R.drawable.king_of_diamonds2, R.drawable.king_of_hearts2, R.drawable.king_of_spades2,
     };
-    Integer number[] ={
-            0, 1, 2, 3,
-            4, 5, 6, 7,
-            8, 9, 10, 11,
-            12, 13, 14, 15,
-            16, 17, 18, 19,
-            20, 21, 22, 23,
-            24, 25, 26, 27,
-            28, 29, 30, 31,
-            32, 33, 34, 35,
-            36, 37, 38, 39,
-            40, 41, 42, 43,
-            44, 45, 46, 47,
-            48, 49, 50, 51
+//    Integer number[] ={
+//            4, 51, 2, 3,
+//            0, 49, 6, 7,
+//            8, 13, 33, 11,
+//            12, 9, 14, 15,
+//            16, 17, 18, 22,
+//            28, 21, 19, 23,
+//            32, 25, 38, 27,
+//            20, 29, 30, 35,
+//            24, 10, 34, 31,
+//            36, 41, 26, 39,
+//            45, 37, 42, 47,
+//            48, 40, 46, 43,
+//            44, 5, 50, 1
+//    };
+
+    Integer number[] = {
+            0,1,2,3,
+            4,5,6,7,
+            8,9,10,11,
+            12,13,14,15,
+            16,17,18,19,
+            20,21,22,23,
+            24,25,26,27,
+            28,29,30,31,
+            32,33,34,35,
+            36,37,38,39,
+            40,41,42,43,
+            44,45,46,47,
+            48,49,50,51
     };
 
 
@@ -72,6 +88,10 @@ public class StartGame extends Activity{
         if(!isDebug){
 
             List<Integer> arr = Arrays.asList(number);
+            Collections.shuffle(arr);
+            Collections.shuffle(arr);
+            Collections.shuffle(arr);
+            Collections.shuffle(arr);
             Collections.shuffle(arr);
 
         }
@@ -144,8 +164,9 @@ public class StartGame extends Activity{
                                         new Handler().postDelayed(new Runnable() {
                                             public void run() {
 
-                                                Intent intentReturn = new Intent(StartGame.this, MainActivity.class);
-                                                startActivity(intentReturn);
+//                                                Intent intentReturn = new Intent(StartGame.this, MainActivity.class);
+//                                                startActivity(intentReturn);
+                                                finish();
 
                                             }
                                         }, 5000);
@@ -161,7 +182,7 @@ public class StartGame extends Activity{
 //                Toast.LENGTH_LONG).show();
                     }
 
-                }, 2000);
+                }, loading);
             }
         });
     }

@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class HowTo extends Activity {
 
     int counter;
@@ -53,7 +56,7 @@ public class HowTo extends Activity {
             "(เริ่มนับจากคนเปิดไพ่) นับ 1 - 3 ผู้เล่นที่นับ 3 โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
             "(เริ่มนับจากคนเปิดไพ่) นับ 1 - 4 ผู้เล่นที่นับ 4 โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
             "(เริ่มนับจากคนเปิดไพ่) นับ 1 - 5 ผู้เล่นที่นับ 5 โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
-            "ผู้เล่นที่เปิดไพ่ต้องตั้งคำถาม และเมื่อผู้เล่นคนใดที่ตอบ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
+            "ผู้เล่นที่เปิดไพ่ต้องตั้งคำถาม และเมื่อผู้เล่นคนใดที่ตอบคำถามผิดหรือตอบช้าเกิน 3 วิ โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
             "(เริ่มนับจากคนเปิดไพ่) ผู้เล่นทุกคนนับเลข 1 - 100 แต่ห้ามนับเลขที่หารด้วย 7 ลงตัว เมื่อผู้เล่นทำไม่ได้โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
             "ใช้การ์ดป้องกัน [2 นาที] สามารถหลบการทำโทษทุกชนิด (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
             "ผู้เล่นที่อยู่ด้านซ้าย ของผู้เปิดไพ่โดนทำโทษ (ไพ่ทั้ง 4 สีมีความหมายเหมือนกัน)",
@@ -80,6 +83,10 @@ public class HowTo extends Activity {
         descriptionTextView.setText(rules[counter]);
         Integer imageInt = images[counter];
         imageView.setImageResource(imageInt);
+
+        AdView mAdView = (AdView) this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 
